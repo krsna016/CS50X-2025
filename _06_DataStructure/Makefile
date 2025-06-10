@@ -1,12 +1,15 @@
 CC = gcc
-CFLAGS = -lcs50
 
 .PHONY: all clean
 
-# Default: show usage
 all:
 	@echo "Usage: make <filename-without-.c>"
 
-# Rule to build any single file
 %: %.c
-	@$(CC) $< -o $@ $(CFLAGS)
+	@if grep -q '#include *<cs50\.h>' $<; then \
+	    echo "Compiling along with CS50 library..."; \
+	    $(CC) $< -o $@ -lcs50; \
+	else \
+	    echo "Compiling without CS50 library..."; \
+	    $(CC) $< -o $@; \
+	fi
