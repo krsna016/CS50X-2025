@@ -25,6 +25,9 @@ int main(void) {
     //     printf("Different!!!\n");
     // }
 
+
+    printf("s at = %p\n",s);
+    printf("t at = %p\n",t);
     // This is the correct way: strcmp dereference address and compare chars of each one by one
     if (strcmp(s,t) == 0) {
         printf("Same!!\n");
